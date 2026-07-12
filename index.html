@@ -149,14 +149,18 @@
   }
 
   /* ============ SPOTLIGHT (helecho, complete entry) ============ */
-  .spotlight{padding:130px 0 90px;}
-  .spotlight .tag{
-    text-align:center; margin-bottom:64px;
-  }
+  .spotlight{padding:90px 0;}
+  .spotlight.alt{background:var(--cream-2);}
+  .spotlight .tag{ text-align:center; margin-bottom:64px; }
   .spot-grid{
     display:grid; grid-template-columns:0.85fr 1fr; gap:64px; align-items:center;
   }
-  @media (max-width:820px){ .spot-grid{grid-template-columns:1fr; gap:36px;} }
+  .spot-grid.reverse{ grid-template-columns:1fr 0.85fr; }
+  .spot-grid.reverse .spot-photo{ order:2; }
+  @media (max-width:820px){
+    .spot-grid, .spot-grid.reverse{grid-template-columns:1fr; gap:36px;}
+    .spot-grid.reverse .spot-photo{ order:0; }
+  }
 
   .spot-photo{
     border-radius:230px 230px 20px 20px; overflow:hidden; aspect-ratio:3/4.1;
@@ -180,39 +184,10 @@
   .care-list li:first-child{border-top:none;}
   .care-emoji{font-size:17px; margin-top:1px; flex-shrink:0;}
 
-  /* ============ PRÓXIMAMENTE STRIP ============ */
-  .proximamente{padding:70px 0 150px;}
-  .proximamente .tag{text-align:center; margin-bottom:14px;}
-  .prox-note{
-    text-align:center; font-size:13.5px; color:var(--umber); opacity:.8; margin-bottom:52px;
-    font-style:italic; font-family:'Fraunces', serif;
-  }
-  .prox-row{
-    display:grid; grid-template-columns:repeat(6,1fr); gap:20px;
-  }
-  @media (max-width:920px){ .prox-row{grid-template-columns:repeat(3,1fr);} }
-  @media (max-width:560px){ .prox-row{grid-template-columns:repeat(2,1fr);} }
-
-  .prox-item{ text-align:center; }
-  .prox-frame{
-    border-radius:100px 100px 12px 12px; overflow:hidden; aspect-ratio:3/4;
-    border:1px solid rgba(110,81,56,0.18);
-  }
-  .prox-frame img{
-    width:100%; height:100%; object-fit:cover;
-    filter:grayscale(0.55) sepia(0.18) brightness(0.96);
-    transition:filter .5s ease, transform .5s ease;
-  }
-  .prox-item:hover .prox-frame img{ filter:grayscale(0) sepia(0) brightness(1); transform:scale(1.04); }
-  .prox-name{
-    font-family:'Fraunces', serif; font-style:italic; font-size:15px; margin-top:14px; color:var(--ink);
-  }
-  .prox-latin{
-    font-size:9.5px; letter-spacing:.08em; text-transform:uppercase; color:var(--terracotta); margin-top:2px; font-weight:600;
-  }
-  .prox-status{
-    display:inline-block; margin-top:8px; font-size:10px; color:var(--umber); opacity:.65;
-    border:1px dashed var(--gold-dim); border-radius:20px; padding:3px 10px;
+  /* empty space reserved for a future care-list, same rhythm as filled ones */
+  .text-slot{
+    height:190px;
+    border-top:1px solid rgba(110,81,56,0.18);
   }
 
   footer{
@@ -264,12 +239,12 @@
   </div>
 </section>
 
-<!-- ============ SPOTLIGHT: HELECHO ============ -->
-<section class="spotlight">
+<!-- ============ CATÁLOGO ============ -->
+<section class="spotlight" style="padding-bottom:20px;">
   <div class="wrap">
     <div class="tag">
-      <div class="eyebrow" style="color:var(--terracotta);">Ficha completa</div>
-      <h2 class="sec-title" style="color:var(--ink);">La primera en el registro</h2>
+      <div class="eyebrow" style="color:var(--terracotta);">El catálogo</div>
+      <h2 class="sec-title" style="color:var(--ink);">Quién es quién</h2>
     </div>
     <div class="spot-grid">
       <div class="spot-photo"><img src="assets/helecho.jpg" alt="Helecho de patitas"></div>
@@ -287,44 +262,85 @@
   </div>
 </section>
 
-<!-- ============ PRÓXIMAMENTE ============ -->
-<section class="proximamente">
+<!-- ============ SANSEVIERIAS ============ -->
+<section class="spotlight alt">
   <div class="wrap">
-    <div class="tag">
-      <div class="eyebrow" style="color:var(--terracotta); text-align:center;">En el vivero</div>
-      <h2 class="sec-title" style="color:var(--ink); text-align:center;">Próximamente en el catálogo</h2>
+    <div class="spot-grid reverse">
+      <div class="spot-photo"><img src="assets/sansevierias.jpg" alt="Sansevierias"></div>
+      <div>
+        <div class="spot-latin">Dracaena trifasciata</div>
+        <h3 class="spot-name">Las Sansevierias</h3>
+        <div class="text-slot"></div>
+      </div>
     </div>
-    <p class="prox-note">— sus fichas de cuidado están en camino —</p>
-    <div class="prox-row">
-      <div class="prox-item">
-        <div class="prox-frame"><img src="assets/sansevierias.jpg" alt="Sansevierias"></div>
-        <div class="prox-name">Sansevierias</div>
-        <div class="prox-latin">Dracaena trifasciata</div>
+  </div>
+</section>
+
+<!-- ============ FILODENDRO ============ -->
+<section class="spotlight">
+  <div class="wrap">
+    <div class="spot-grid">
+      <div class="spot-photo"><img src="assets/filodendro.jpg" alt="Filodendro"></div>
+      <div>
+        <div class="spot-latin">Philodendron sp.</div>
+        <h3 class="spot-name">El Filodendro</h3>
+        <div class="text-slot"></div>
       </div>
-      <div class="prox-item">
-        <div class="prox-frame"><img src="assets/filodendro.jpg" alt="Filodendro"></div>
-        <div class="prox-name">Filodendro</div>
-        <div class="prox-latin">Philodendron sp.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ALOE ============ -->
+<section class="spotlight alt">
+  <div class="wrap">
+    <div class="spot-grid reverse">
+      <div class="spot-photo"><img src="assets/aloe.jpg" alt="Aloe vera"></div>
+      <div>
+        <div class="spot-latin">Aloe vera</div>
+        <h3 class="spot-name">El Aloe</h3>
+        <div class="text-slot"></div>
       </div>
-      <div class="prox-item">
-        <div class="prox-frame"><img src="assets/aloe.jpg" alt="Aloe vera"></div>
-        <div class="prox-name">Aloe</div>
-        <div class="prox-latin">Aloe vera</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CINTA ============ -->
+<section class="spotlight">
+  <div class="wrap">
+    <div class="spot-grid">
+      <div class="spot-photo"><img src="assets/cinta.jpg" alt="Cinta"></div>
+      <div>
+        <div class="spot-latin">Chlorophytum sp.</div>
+        <h3 class="spot-name">La Cinta</h3>
+        <div class="text-slot"></div>
       </div>
-      <div class="prox-item">
-        <div class="prox-frame"><img src="assets/cinta.jpg" alt="Cinta"></div>
-        <div class="prox-name">Cinta</div>
-        <div class="prox-latin">Chlorophytum sp.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ALOCASIA ============ -->
+<section class="spotlight alt">
+  <div class="wrap">
+    <div class="spot-grid reverse">
+      <div class="spot-photo"><img src="assets/alocasia.jpg" alt="Alocasia"></div>
+      <div>
+        <div class="spot-latin">Alocasia sp.</div>
+        <h3 class="spot-name">La Alocasia</h3>
+        <div class="text-slot"></div>
       </div>
-      <div class="prox-item">
-        <div class="prox-frame"><img src="assets/alocasia.jpg" alt="Alocasia"></div>
-        <div class="prox-name">Alocasia</div>
-        <div class="prox-latin">Alocasia sp.</div>
-      </div>
-      <div class="prox-item">
-        <div class="prox-frame"><img src="assets/euphorbia.jpg" alt="Euphorbia"></div>
-        <div class="prox-name">Euphorbia</div>
-        <div class="prox-latin">Euphorbia sp.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ EUPHORBIA ============ -->
+<section class="spotlight">
+  <div class="wrap">
+    <div class="spot-grid">
+      <div class="spot-photo"><img src="assets/euphorbia.jpg" alt="Euphorbia"></div>
+      <div>
+        <div class="spot-latin">Euphorbia sp.</div>
+        <h3 class="spot-name">La Euphorbia</h3>
+        <div class="text-slot"></div>
       </div>
     </div>
   </div>
