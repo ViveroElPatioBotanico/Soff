@@ -174,10 +174,51 @@
   }
 
   .spot-photo{
+    position:relative; display:block; cursor:pointer;
     border-radius:230px 230px 20px 20px; overflow:hidden; aspect-ratio:3/4.1;
-    box-shadow:var(--shadow); border:1px solid rgba(110,81,56,0.15);
+    box-shadow:var(--shadow); border:1px solid rgba(114,103,48,0.15);
   }
-  .spot-photo img{width:100%; height:100%; object-fit:cover;}
+  .spot-photo img{width:100%; height:100%; object-fit:cover; transition:transform .6s ease;}
+  .spot-photo:hover img{ transform:scale(1.045); }
+
+  .cart-overlay{
+    position:absolute; inset:0; display:flex; align-items:center; justify-content:center;
+    background:rgba(42,35,15,0); transition:background .4s ease; opacity:0;
+  }
+  .spot-photo:hover .cart-overlay, .spot-photo:focus .cart-overlay{
+    background:rgba(42,35,15,0.42); opacity:1;
+  }
+  .cart-pill{
+    display:inline-flex; align-items:center; gap:8px;
+    background:var(--paper); color:var(--ink); padding:13px 24px; border-radius:40px;
+    font-size:12.5px; letter-spacing:.08em; text-transform:uppercase; font-weight:600;
+    transform:translateY(10px); opacity:0; transition:all .4s ease;
+    box-shadow:0 14px 30px rgba(20,16,6,0.3);
+  }
+  .spot-photo:hover .cart-pill{ transform:translateY(0); opacity:1; }
+
+  .cart-cta{
+    display:inline-flex; align-items:center; gap:9px; margin-top:26px;
+    border:1px solid var(--ink); color:var(--ink); background:transparent;
+    padding:13px 26px; border-radius:40px; text-decoration:none;
+    font-size:12.5px; letter-spacing:.08em; text-transform:uppercase; font-weight:600;
+    transition:all .3s ease;
+  }
+  .cart-cta:hover{ background:var(--ink); color:var(--cream); }
+
+  /* ============ STICKY NAV ============ */
+  .site-nav{
+    position:fixed; top:0; left:0; right:0; z-index:100;
+    display:flex; align-items:center; justify-content:center; gap:14px;
+    padding:14px 0; background:rgba(243,219,195,0.88); backdrop-filter:blur(10px);
+    border-bottom:1px solid rgba(114,103,48,0.15);
+    transform:translateY(-100%); transition:transform .45s ease;
+  }
+  .site-nav.show{ transform:translateY(0); }
+  .site-nav img{ width:34px; height:34px; border-radius:8px; object-fit:cover; }
+  .site-nav span{
+    font-family:'Fraunces', serif; font-style:italic; font-size:16px; color:var(--ink);
+  }
 
   .spot-latin{
     font-size:12px; letter-spacing:.14em; text-transform:uppercase;
@@ -209,6 +250,11 @@
 </head>
 <body>
 <div class="grain"></div>
+
+<header class="site-nav" id="siteNav">
+  <img src="assets/logo.jpg" alt="logo">
+  <span>Vivero El Patio Botánico</span>
+</header>
 
 <!-- ============ HERO ============ -->
 <section class="hero">
@@ -260,7 +306,10 @@
       <h2 class="sec-title" style="color:var(--ink);">Quién es quién</h2>
     </div>
     <div class="spot-grid">
-      <div class="spot-photo"><img src="assets/helecho.jpg" alt="Helecho de patitas"></div>
+      <a class="spot-photo" href="https://wa.me/521234567890?text=%C2%A1Hola%21%20Vengo%20de%20la%20p%C3%A1gina%20y%20vi%20el%20Helecho%20%F0%9F%8C%BF%20Quiero%20agregarlo%20a%20mi%20pedido%2C%20%C2%BFme%20ayudas%20con%20disponibilidad%20y%20precio%3F" target="_blank" rel="noopener">
+        <img src="assets/helecho.jpg" alt="Helecho de patitas">
+        <span class="cart-overlay"><span class="cart-pill">🛒 Agregar al carrito</span></span>
+      </a>
       <div>
         <div class="spot-latin">Nephrolepis sp.</div>
         <h3 class="spot-name">El Helecho</h3>
@@ -270,6 +319,7 @@
           <li><span class="care-emoji">🌬️</span><span>Vienen de la selva tropical, cero corrientes de aire: odia el aire acondicionado, si lo pones frente a un ventilador se le van a despeinar las hojas y te va a odiar en silencio.</span></li>
           <li><span class="care-emoji">👑</span><span>Trátalo como a un aristócrata victoriano con salud frágil: mucha humedad, sombra elegante y absolutamente nada de sequías.</span></li>
         </ul>
+        <a class="cart-cta" href="https://wa.me/521234567890?text=%C2%A1Hola%21%20Vengo%20de%20la%20p%C3%A1gina%20y%20vi%20el%20Helecho%20%F0%9F%8C%BF%20Quiero%20agregarlo%20a%20mi%20pedido%2C%20%C2%BFme%20ayudas%20con%20disponibilidad%20y%20precio%3F" target="_blank" rel="noopener">🛒 Agregar al carrito</a>
       </div>
     </div>
   </div>
@@ -279,11 +329,15 @@
 <section class="spotlight alt">
   <div class="wrap">
     <div class="spot-grid reverse">
-      <div class="spot-photo"><img src="assets/sansevierias.jpg" alt="Sansevierias"></div>
+      <a class="spot-photo" href="https://wa.me/521234567890?text=%C2%A1Hola%21%20Vengo%20de%20la%20p%C3%A1gina%20y%20vi%20las%20Sansevierias%20%F0%9F%8C%BF%20Quiero%20agregarlas%20a%20mi%20pedido%2C%20%C2%BFme%20ayudas%20con%20disponibilidad%20y%20precio%3F" target="_blank" rel="noopener">
+        <img src="assets/sansevierias.jpg" alt="Sansevierias">
+        <span class="cart-overlay"><span class="cart-pill">🛒 Agregar al carrito</span></span>
+      </a>
       <div>
         <div class="spot-latin">Dracaena trifasciata</div>
         <h3 class="spot-name">Las Sansevierias</h3>
         <div class="text-slot"></div>
+        <a class="cart-cta" href="https://wa.me/521234567890?text=%C2%A1Hola%21%20Vengo%20de%20la%20p%C3%A1gina%20y%20vi%20las%20Sansevierias%20%F0%9F%8C%BF%20Quiero%20agregarlas%20a%20mi%20pedido%2C%20%C2%BFme%20ayudas%20con%20disponibilidad%20y%20precio%3F" target="_blank" rel="noopener">🛒 Agregar al carrito</a>
       </div>
     </div>
   </div>
@@ -293,11 +347,15 @@
 <section class="spotlight">
   <div class="wrap">
     <div class="spot-grid">
-      <div class="spot-photo"><img src="assets/filodendro.jpg" alt="Filodendro"></div>
+      <a class="spot-photo" href="https://wa.me/521234567890?text=%C2%A1Hola%21%20Vengo%20de%20la%20p%C3%A1gina%20y%20vi%20el%20Filodendro%20%F0%9F%8C%BF%20Quiero%20agregarlo%20a%20mi%20pedido%2C%20%C2%BFme%20ayudas%20con%20disponibilidad%20y%20precio%3F" target="_blank" rel="noopener">
+        <img src="assets/filodendro.jpg" alt="Filodendro">
+        <span class="cart-overlay"><span class="cart-pill">🛒 Agregar al carrito</span></span>
+      </a>
       <div>
         <div class="spot-latin">Philodendron sp.</div>
         <h3 class="spot-name">El Filodendro</h3>
         <div class="text-slot"></div>
+        <a class="cart-cta" href="https://wa.me/521234567890?text=%C2%A1Hola%21%20Vengo%20de%20la%20p%C3%A1gina%20y%20vi%20el%20Filodendro%20%F0%9F%8C%BF%20Quiero%20agregarlo%20a%20mi%20pedido%2C%20%C2%BFme%20ayudas%20con%20disponibilidad%20y%20precio%3F" target="_blank" rel="noopener">🛒 Agregar al carrito</a>
       </div>
     </div>
   </div>
@@ -307,11 +365,15 @@
 <section class="spotlight alt">
   <div class="wrap">
     <div class="spot-grid reverse">
-      <div class="spot-photo"><img src="assets/aloe.jpg" alt="Aloe vera"></div>
+      <a class="spot-photo" href="https://wa.me/521234567890?text=%C2%A1Hola%21%20Vengo%20de%20la%20p%C3%A1gina%20y%20vi%20el%20Aloe%20%F0%9F%8C%BF%20Quiero%20agregarlo%20a%20mi%20pedido%2C%20%C2%BFme%20ayudas%20con%20disponibilidad%20y%20precio%3F" target="_blank" rel="noopener">
+        <img src="assets/aloe.jpg" alt="Aloe vera">
+        <span class="cart-overlay"><span class="cart-pill">🛒 Agregar al carrito</span></span>
+      </a>
       <div>
         <div class="spot-latin">Aloe vera</div>
         <h3 class="spot-name">El Aloe</h3>
         <div class="text-slot"></div>
+        <a class="cart-cta" href="https://wa.me/521234567890?text=%C2%A1Hola%21%20Vengo%20de%20la%20p%C3%A1gina%20y%20vi%20el%20Aloe%20%F0%9F%8C%BF%20Quiero%20agregarlo%20a%20mi%20pedido%2C%20%C2%BFme%20ayudas%20con%20disponibilidad%20y%20precio%3F" target="_blank" rel="noopener">🛒 Agregar al carrito</a>
       </div>
     </div>
   </div>
@@ -321,11 +383,15 @@
 <section class="spotlight">
   <div class="wrap">
     <div class="spot-grid">
-      <div class="spot-photo"><img src="assets/cinta.jpg" alt="Cinta"></div>
+      <a class="spot-photo" href="https://wa.me/521234567890?text=%C2%A1Hola%21%20Vengo%20de%20la%20p%C3%A1gina%20y%20vi%20la%20Cinta%20%F0%9F%8C%BF%20Quiero%20agregarla%20a%20mi%20pedido%2C%20%C2%BFme%20ayudas%20con%20disponibilidad%20y%20precio%3F" target="_blank" rel="noopener">
+        <img src="assets/cinta.jpg" alt="Cinta">
+        <span class="cart-overlay"><span class="cart-pill">🛒 Agregar al carrito</span></span>
+      </a>
       <div>
         <div class="spot-latin">Chlorophytum sp.</div>
         <h3 class="spot-name">La Cinta</h3>
         <div class="text-slot"></div>
+        <a class="cart-cta" href="https://wa.me/521234567890?text=%C2%A1Hola%21%20Vengo%20de%20la%20p%C3%A1gina%20y%20vi%20la%20Cinta%20%F0%9F%8C%BF%20Quiero%20agregarla%20a%20mi%20pedido%2C%20%C2%BFme%20ayudas%20con%20disponibilidad%20y%20precio%3F" target="_blank" rel="noopener">🛒 Agregar al carrito</a>
       </div>
     </div>
   </div>
@@ -335,11 +401,15 @@
 <section class="spotlight alt">
   <div class="wrap">
     <div class="spot-grid reverse">
-      <div class="spot-photo"><img src="assets/alocasia.jpg" alt="Alocasia"></div>
+      <a class="spot-photo" href="https://wa.me/521234567890?text=%C2%A1Hola%21%20Vengo%20de%20la%20p%C3%A1gina%20y%20vi%20la%20Alocasia%20%F0%9F%8C%BF%20Quiero%20agregarla%20a%20mi%20pedido%2C%20%C2%BFme%20ayudas%20con%20disponibilidad%20y%20precio%3F" target="_blank" rel="noopener">
+        <img src="assets/alocasia.jpg" alt="Alocasia">
+        <span class="cart-overlay"><span class="cart-pill">🛒 Agregar al carrito</span></span>
+      </a>
       <div>
         <div class="spot-latin">Alocasia sp.</div>
         <h3 class="spot-name">La Alocasia</h3>
         <div class="text-slot"></div>
+        <a class="cart-cta" href="https://wa.me/521234567890?text=%C2%A1Hola%21%20Vengo%20de%20la%20p%C3%A1gina%20y%20vi%20la%20Alocasia%20%F0%9F%8C%BF%20Quiero%20agregarla%20a%20mi%20pedido%2C%20%C2%BFme%20ayudas%20con%20disponibilidad%20y%20precio%3F" target="_blank" rel="noopener">🛒 Agregar al carrito</a>
       </div>
     </div>
   </div>
@@ -349,11 +419,15 @@
 <section class="spotlight">
   <div class="wrap">
     <div class="spot-grid">
-      <div class="spot-photo"><img src="assets/euphorbia.jpg" alt="Euphorbia"></div>
+      <a class="spot-photo" href="https://wa.me/521234567890?text=%C2%A1Hola%21%20Vengo%20de%20la%20p%C3%A1gina%20y%20vi%20la%20Euphorbia%20%F0%9F%8C%BF%20Quiero%20agregarla%20a%20mi%20pedido%2C%20%C2%BFme%20ayudas%20con%20disponibilidad%20y%20precio%3F" target="_blank" rel="noopener">
+        <img src="assets/euphorbia.jpg" alt="Euphorbia">
+        <span class="cart-overlay"><span class="cart-pill">🛒 Agregar al carrito</span></span>
+      </a>
       <div>
         <div class="spot-latin">Euphorbia sp.</div>
         <h3 class="spot-name">La Euphorbia</h3>
         <div class="text-slot"></div>
+        <a class="cart-cta" href="https://wa.me/521234567890?text=%C2%A1Hola%21%20Vengo%20de%20la%20p%C3%A1gina%20y%20vi%20la%20Euphorbia%20%F0%9F%8C%BF%20Quiero%20agregarla%20a%20mi%20pedido%2C%20%C2%BFme%20ayudas%20con%20disponibilidad%20y%20precio%3F" target="_blank" rel="noopener">🛒 Agregar al carrito</a>
       </div>
     </div>
   </div>
@@ -364,5 +438,11 @@
   TEXTO PENDIENTE. 🌿
 </footer>
 
+<script>
+  const nav = document.getElementById('siteNav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('show', window.scrollY > window.innerHeight * 0.75);
+  });
+</script>
 </body>
 </html>
